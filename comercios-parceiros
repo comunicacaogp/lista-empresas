@@ -49,7 +49,6 @@ mark{background:var(--gold);color:#1b2430;border-radius:2px}
 </ul>
 <div class="bar">
 <input id="q" type="search" placeholder="Buscar por nome, rua ou telefone" aria-label="Buscar comércio parceiro" autocomplete="off">
-<div class="chips" id="chips"></div>
 </div>
 <div class="count" id="count" aria-live="polite"></div>
 <ul class="list" id="list"></ul>
@@ -59,10 +58,10 @@ var AV="Av. José Ferreira da Costa";
 var D=[
 ["Mundo dos Notebooks|1039|99877-1723","Panificadora Art Pães|1988|3247-1826","Kimalha Confecções|1369|3247-5019","Mega Mercado|1570|3247-1336","Lanchonete Café Ponto Com|171|","Arara Materiais para Construção|1125|99954-3903","A Popular Esportes|1464|99627-8514","Drogamed|2424|99834-6865","Auto Posto Eldorado|Av. J 775|99617-6910","Club da Carne|Rua Domingos Augusto Coelho 664|99928-1367"],
 ["Duda Utilidades e Presentes|1650|3247-4982","Capiau Ervas|Av. Pantanal 699|99926-5273","Passos Confecções|1678|99865-5968","Passos Calçados|2042|99865-5968","Construlider|1489|99964-1207","Tudo de Bom Espetos|920|","Marimar Modas|2029|3247-1786","Mundial Forros|2394|99811-8304","DK Store|983|98123-6382","Texas Pizzaria|Rua Marechal Floriano Peixoto 587|99607-3916"],
-["JL Biju|1324|98122-0874","Vania Variedades|Rua Maranhão 141|98481-5929","JV Suplementos|789|99929-8383","Banho e Tosa da Tia Iste|Av. J 211|99613-2815","Tuca Perfumes|Rua Amazonas 430|9 81487-0326","Miranda Pneus|Rua Tércio Teixeira Machado 395|3247-1550","KNN Idiomas|Rua Josina Garcia de Melo 1450|99987-4064","Stylus Motos|1440|99909-7297","Redpk Papelaria|Rua João Bispo de Carvalho 856|98177-5555","Esquinão Lava Jato|Av. José Francisco da Silva 575|98204-2318"],
+["JL Biju|1324|98122-0874","Vania Variedades|Rua Maranhão 141|98481-5929","JV Suplementos|789|99929-8383","Banho e Tosa da Tia Iste|Av. J 211|99613-2815","Tuca Perfumes|Rua Amazonas 430|98148-0326","Miranda Pneus|Rua Tércio Teixeira Machado 395|3247-1550","KNN Idiomas|Rua Josina Garcia de Melo 1450|99987-4064","Stylus Motos|1440|99909-7297","Redpk Papelaria|Rua João Bispo de Carvalho 856|98177-5555","Esquinão Lava Jato|Av. José Francisco da Silva 575|98204-2318"],
 ["Chiquinho Sorvetes|553|99859-6924","Center Mix|1537|3247-1344","Conveniência Aki Tem|Rua Antônio Bocalan 26|99916-3935","Loja Barreto Canaã|2356|99615-4323","Mundo da Festa|1735|99677-6080","Aqua Sport|Rua Eulampia Rodrigues 56|99920-3177","Casa de Carne Soberano|2640|99807-8464","Barbearia|Rua José Narciso Totó 527|99831-1163","Tropical Espetos|249|99652-2440","RF Informática|2029|98415-1786"],
 ["UAU Celulares|2342|99990-8851","Jo Modas|89|99698-8539","Gás Costa Rica|241|99910-0177","Conveniência Campocity|Rua Tocantins 91|3247-5224","Cabreira Jardinagem|Rua José Calazans da Silva 71|99964-1871","Coopervans do Pantanal|Rua Avelino Paes Ananias 268|99696-1588","Zizo Pneus|Rua José Antônio Dias 518|98411-0000","Raffas Restaurante|Parque Municipal da Lage|(66) 99963-0504","Clínica Medo On|Av. Sebastião Paes Ananias 468|99699-1992","Pedra Net|1052|(66) 99958-5355"],
-["Agrosal Nutrição Animal|Av. Argentina 857|99944-4882","Churrascaria Dom Pixogte|400|99811-4966","Mercado Cesar|Av. J 580|3247-4511","Marcão Auto Center|Av. J 2149|98119-9922","Rodrigo Móveis|Rua Campos Sales 116|99991-6077","Auto Peças Oliveira|845|3247-1003","Ótica Visual|2123|98156-5702","Laboratório Oswaldo Cruz|Rua Tércio Teixeira Machado 1038|3247-1493","Refrigeração Resende|Rua Dimas Gomes Filho 475|99985-5292","Rede M2B|1113|0800 000 0051"],
+["Agrosal Nutrição Animal|Av. Argentina 857|99944-4882","Churrascaria Dom Pixote|400|99811-4966","Mercado Cesar|Av. J 580|3247-4511","Marcão Auto Center|Av. J 2149|98119-9922","Rodrigo Móveis|Rua Campos Sales 116|99991-6077","Auto Peças Oliveira|845|3247-1003","Ótica Visual|2123|98156-5702","Laboratório Oswaldo Cruz|Rua Tércio Teixeira Machado 1038|3247-1493","Refrigeração Resende|Rua Dimas Gomes Filho 475|99985-5292","Rede M2B|1113|0800 000 0051"],
 ["Drogamix|1660|3247-3326","Porteira Aberta Projetos Agropecuários|2171|99650-3837","Central Presentes|1453|99941-7777","Costa Rica Confecções|Av. J 146|99962-6896","Construmais|1999|99915-6666","MS Farma|1571|99982-2567","Glou Perfumaria|1034|99940-2065","Drogaria Viva Mais|Rua Ari Platero Lar 237|3247-5508","Studio Ana Trindade|Rua Lobo Guará 154|99199-9938".replace("99199","98199"),"Zemar Cabeleireira|911|99942-9885"],
 ["Risco Zero|474|3247-3509","LM Modas|320|98476-5970","Brito Solar|983|98418-7031","Rações do Pitoca|914|99662-1725","Hot Dog Cachorrão|935|99664-2220","Ultragás|1501|98114-7131","Móveis Calderam|522|99838-5775","Doidão Materiais para Construção|Rua Adonel Dias 81|99607-8389"]
 ];
@@ -72,17 +71,15 @@ function norm(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowe
 function tel(t){if(!t)return"";if(t.charAt(0)==="("||t.indexOf("0800")===0)return t;return"(67) "+t;}
 function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 function hl(s,q){if(!q)return esc(s);var ns=norm(s),i=ns.indexOf(q);if(i<0)return esc(s);return esc(s.slice(0,i))+"<mark>"+esc(s.slice(i,i+q.length))+"</mark>"+esc(s.slice(i+q.length));}
-var grp=0,qEl=document.getElementById("q"),list=document.getElementById("list"),cnt=document.getElementById("count"),chips=document.getElementById("chips");
-function mkChip(label,v){var b=document.createElement("button");b.type="button";b.textContent=label;b.setAttribute("aria-pressed",v===grp);b.onclick=function(){grp=v;[].forEach.call(chips.children,function(c,k){c.setAttribute("aria-pressed",k===v);});render();};chips.appendChild(b);}
-mkChip("Todos",0);for(var k=1;k<=D.length;k++)mkChip("Grupo "+k,k);
+var grp=0,qEl=document.getElementById("q"),list=document.getElementById("list"),cnt=document.getElementById("count");
 function render(){
 var q=norm(qEl.value.trim()),qd=q.replace(/\D/g,"");
-var res=items.filter(function(x){if(grp&&x.g!==grp)return false;if(!q)return true;
+var res=items.filter(function(x){if(!q)return true;
 return norm(x.n+" "+x.a).indexOf(q)>-1||(qd.length>1&&x.t.replace(/\D/g,"").indexOf(qd)>-1);});
 cnt.textContent=res.length+(res.length===1?" comércio encontrado":" comércios encontrados");
 if(!res.length){list.innerHTML='<li class="empty">Nenhum comércio encontrado. Tente outro nome, rua ou limpe os filtros.</li>';return;}
 list.innerHTML=res.map(function(x){var t=tel(x.t);
-return '<li><div><div class="n">'+hl(x.n,q)+'</div><div class="a">'+hl(x.a,q)+'</div></div><div class="r">'+(t?'<a class="tel" href="tel:'+(t.charAt(0)==="0"?t.replace(/\s/g,""):"+55"+t.replace(/\D/g,""))+'">'+esc(t)+'</a>':'')+'<div class="g">Grupo '+x.g+'</div></div></li>';}).join("");
+return '<li><div><div class="n">'+hl(x.n,q)+'</div><div class="a">'+hl(x.a,q)+'</div></div><div class="r">'+(t?'<a class="tel" href="tel:'+(t.charAt(0)==="0"?t.replace(/\s/g,""):"+55"+t.replace(/\D/g,""))+'">'+esc(t)+'</a>':'')+'</div></li>';}).join("");
 }
 qEl.addEventListener("input",render);render();
 </script>
