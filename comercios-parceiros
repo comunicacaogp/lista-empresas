@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comércios parceiros – Promoção de fim de ano Super FM</title>
+<style>
+:root{--bg:#f7f5ef;--surface:#fff;--ink:#1b2430;--muted:#5d6877;--line:#dcd8cc;--accent:#0b5c8a;--gold:#f2b705;--chip:#ece8dc;--chipon:#0b5c8a;--chipink:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171f;--surface:#18222d;--ink:#eef1f4;--muted:#9aa7b6;--line:#2b3846;--accent:#6cc3f2;--chip:#223040;--chipon:#f2b705;--chipink:#10171f}}
+:root[data-theme="dark"]{--bg:#10171f;--surface:#18222d;--ink:#eef1f4;--muted:#9aa7b6;--line:#2b3846;--accent:#6cc3f2;--chip:#223040;--chipon:#f2b705;--chipink:#10171f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Trebuchet MS","Segoe UI",system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:28px 18px 48px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.15;margin:0 0 8px}
+.lead{color:var(--muted);margin:0 0 16px}
+.prizes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.prizes li{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gold);padding:6px 12px;border-radius:6px;font-size:.92rem}
+.prizes b{font-variant-numeric:tabular-nums}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0 10px;z-index:5}
+input[type=search]{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+input[type=search]:focus{outline:3px solid var(--gold);border-color:var(--accent)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px}
+.chips button{flex:none;font:inherit;font-size:.88rem;border:0;background:var(--chip);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--chipon);color:var(--chipink)}
+.chips button:focus-visible{outline:3px solid var(--gold)}
+.count{color:var(--muted);font-size:.9rem;margin:8px 0}
+ul.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.list li{display:flex;justify-content:space-between;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line)}
+.n{font-weight:700}
+.a{color:var(--muted);font-size:.9rem}
+.g{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.tel{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap}
+.tel:hover{text-decoration:underline}
+.r{text-align:right}
+.empty{padding:28px 0;color:var(--muted)}
+mark{background:var(--gold);color:#1b2430;border-radius:2px}
+@media (max-width:480px){.list li{flex-direction:column;gap:2px}.r{text-align:left}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Comércios parceiros da promoção de fim de ano</h1>
+<p class="lead">Compre nas empresas participantes, peça seu cupom, coloque na urna e boa sorte!</p>
+<ul class="prizes">
+<li><b>10/12</b> – R$ 1.000,00</li>
+<li><b>20/12</b> – R$ 2.000,00</li>
+<li><b>05/01</b> – R$ 3.000,00</li>
+</ul>
+<div class="bar">
+<input id="q" type="search" placeholder="Buscar por nome, rua ou telefone" aria-label="Buscar comércio parceiro" autocomplete="off">
+<div class="chips" id="chips"></div>
+</div>
+<div class="count" id="count" aria-live="polite"></div>
+<ul class="list" id="list"></ul>
+</div>
+<script>
+var AV="Av. José Ferreira da Costa";
+var D=[
+["Mundo dos Notebooks|1039|99877-1723","Panificadora Art Pães|1988|3247-1826","Kimalha Confecções|1369|3247-5019","Mega Mercado|1570|3247-1336","Lanchonete Café Ponto Com|171|","Arara Materiais para Construção|1125|99954-3903","A Popular Esportes|1464|99627-8514","Drogamed|2424|99834-6865","Auto Posto Eldorado|Av. J 775|99617-6910","Club da Carne|Rua Domingos Augusto Coelho 664|99928-1367"],
+["Duda Utilidades e Presentes|1650|3247-4982","Capiau Ervas|Av. Pantanal 699|99926-5273","Passos Confecções|1678|99865-5968","Passos Calçados|2042|99865-5968","Construlider|1489|99964-1207","Tudo de Bom Espetos|920|","Marimar Modas|2029|3247-1786","Mundial Forros|2394|99811-8304","DK Store|983|98123-6382","Texas Pizzaria|Rua Marechal Floriano Peixoto 587|99607-3916"],
+["JL Biju|1324|98122-0874","Vania Variedades|Rua Maranhão 141|98481-5929","JV Suplementos|789|99929-8383","Banho e Tosa da Tia Iste|Av. J 211|99613-2815","Tuca Perfumes|Rua Amazonas 430|9 81487-0326","Miranda Pneus|Rua Tércio Teixeira Machado 395|3247-1550","KNN Idiomas|Rua Josina Garcia de Melo 1450|99987-4064","Stylus Motos|1440|99909-7297","Redpk Papelaria|Rua João Bispo de Carvalho 856|98177-5555","Esquinão Lava Jato|Av. José Francisco da Silva 575|98204-2318"],
+["Chiquinho Sorvetes|553|99859-6924","Center Mix|1537|3247-1344","Conveniência Aki Tem|Rua Antônio Bocalan 26|99916-3935","Loja Barreto Canaã|2356|99615-4323","Mundo da Festa|1735|99677-6080","Aqua Sport|Rua Eulampia Rodrigues 56|99920-3177","Casa de Carne Soberano|2640|99807-8464","Barbearia|Rua José Narciso Totó 527|99831-1163","Tropical Espetos|249|99652-2440","RF Informática|2029|98415-1786"],
+["UAU Celulares|2342|99990-8851","Jo Modas|89|99698-8539","Gás Costa Rica|241|99910-0177","Conveniência Campocity|Rua Tocantins 91|3247-5224","Cabreira Jardinagem|Rua José Calazans da Silva 71|99964-1871","Coopervans do Pantanal|Rua Avelino Paes Ananias 268|99696-1588","Zizo Pneus|Rua José Antônio Dias 518|98411-0000","Raffas Restaurante|Parque Municipal da Lage|(66) 99963-0504","Clínica Medo On|Av. Sebastião Paes Ananias 468|99699-1992","Pedra Net|1052|(66) 99958-5355"],
+["Agrosal Nutrição Animal|Av. Argentina 857|99944-4882","Churrascaria Dom Pixogte|400|99811-4966","Mercado Cesar|Av. J 580|3247-4511","Marcão Auto Center|Av. J 2149|98119-9922","Rodrigo Móveis|Rua Campos Sales 116|99991-6077","Auto Peças Oliveira|845|3247-1003","Ótica Visual|2123|98156-5702","Laboratório Oswaldo Cruz|Rua Tércio Teixeira Machado 1038|3247-1493","Refrigeração Resende|Rua Dimas Gomes Filho 475|99985-5292","Rede M2B|1113|0800 000 0051"],
+["Drogamix|1660|3247-3326","Porteira Aberta Projetos Agropecuários|2171|99650-3837","Central Presentes|1453|99941-7777","Costa Rica Confecções|Av. J 146|99962-6896","Construmais|1999|99915-6666","MS Farma|1571|99982-2567","Glou Perfumaria|1034|99940-2065","Drogaria Viva Mais|Rua Ari Platero Lar 237|3247-5508","Studio Ana Trindade|Rua Lobo Guará 154|99199-9938".replace("99199","98199"),"Zemar Cabeleireira|911|99942-9885"],
+["Risco Zero|474|3247-3509","LM Modas|320|98476-5970","Brito Solar|983|98418-7031","Rações do Pitoca|914|99662-1725","Hot Dog Cachorrão|935|99664-2220","Ultragás|1501|98114-7131","Móveis Calderam|522|99838-5775","Doidão Materiais para Construção|Rua Adonel Dias 81|99607-8389"]
+];
+var items=[];
+D.forEach(function(g,i){g.forEach(function(s){var p=s.split("|");var a=/^\d+$/.test(p[1])?AV+", "+p[1]:p[1];items.push({n:p[0],a:a,t:p[2],g:i+1});});});
+function norm(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();}
+function tel(t){if(!t)return"";if(t.charAt(0)==="("||t.indexOf("0800")===0)return t;return"(67) "+t;}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function hl(s,q){if(!q)return esc(s);var ns=norm(s),i=ns.indexOf(q);if(i<0)return esc(s);return esc(s.slice(0,i))+"<mark>"+esc(s.slice(i,i+q.length))+"</mark>"+esc(s.slice(i+q.length));}
+var grp=0,qEl=document.getElementById("q"),list=document.getElementById("list"),cnt=document.getElementById("count"),chips=document.getElementById("chips");
+function mkChip(label,v){var b=document.createElement("button");b.type="button";b.textContent=label;b.setAttribute("aria-pressed",v===grp);b.onclick=function(){grp=v;[].forEach.call(chips.children,function(c,k){c.setAttribute("aria-pressed",k===v);});render();};chips.appendChild(b);}
+mkChip("Todos",0);for(var k=1;k<=D.length;k++)mkChip("Grupo "+k,k);
+function render(){
+var q=norm(qEl.value.trim()),qd=q.replace(/\D/g,"");
+var res=items.filter(function(x){if(grp&&x.g!==grp)return false;if(!q)return true;
+return norm(x.n+" "+x.a).indexOf(q)>-1||(qd.length>1&&x.t.replace(/\D/g,"").indexOf(qd)>-1);});
+cnt.textContent=res.length+(res.length===1?" comércio encontrado":" comércios encontrados");
+if(!res.length){list.innerHTML='<li class="empty">Nenhum comércio encontrado. Tente outro nome, rua ou limpe os filtros.</li>';return;}
+list.innerHTML=res.map(function(x){var t=tel(x.t);
+return '<li><div><div class="n">'+hl(x.n,q)+'</div><div class="a">'+hl(x.a,q)+'</div></div><div class="r">'+(t?'<a class="tel" href="tel:'+(t.charAt(0)==="0"?t.replace(/\s/g,""):"+55"+t.replace(/\D/g,""))+'">'+esc(t)+'</a>':'')+'<div class="g">Grupo '+x.g+'</div></div></li>';}).join("");
+}
+qEl.addEventListener("input",render);render();
+</script>
+</body>
+</html>
